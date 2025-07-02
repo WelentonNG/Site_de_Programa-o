@@ -8,8 +8,6 @@ FUTURAS ATUALIZAÇÕES:
 
 -Links de site para estudar e treinar 
 
--dicas
-
 -Bem dificl talvez uma IDE online para programar(Provalvomente esse e o que vai demorar mais)
 
 
