@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Aprenda Programação</title>
+  <style>
+
+    input[type="text"], input[type="password"] {
+  font-family: 'Courier New', Courier, monospace;
+  width: 100%;
+  padding: 14px 18px;
+  margin: 12px 0 25px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  background-color: #222;
+  color: #eee;
+  box-shadow: inset 0 0 8px #000000;
+  transition: box-shadow 0.3s ease;
+}
+
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .login-container {
+      background-color: rgba(30, 30, 30, 0.9);
+      padding: 40px 50px 50px 50px;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.8);
+      width: 350px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .login-container h2 {
+      margin-bottom: 30px;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 1.2px;
+      color: #4caf50;
+      text-shadow: 0 0 8px #4caf50;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 14px 18px;
+      margin: 12px 0 25px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      background-color: #222;
+      color: #eee;
+      box-shadow: inset 0 0 8px #000000;
+      transition: box-shadow 0.3s ease;
+    }
+    input[type="text"]:focus, input[type="password"]:focus {
+      outline: none;
+      box-shadow: 0 0 10px #4caf50;
+      background-color: #333;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    button:hover {
+      background-color: #43a047;
+      box-shadow: 0 6px 20px rgba(67, 160, 71, 0.8);
+    }
+
+    .error {
+      color: #ff5555;
+      margin-bottom: 20px;
+      font-weight: 700;
+      display: none;
+      text-shadow: 0 0 6px #ff5555;
+    }
+
+    /* Imagem no topo */
+    .logo-programacao {
+      width: 120px;
+      margin: 0 auto 25px auto;
+      display: block;
+      filter: drop-shadow(0 0 4px #4caf50);
+    }
+
+    /* Fundo decorativo */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -150px;
+      left: -150px;
+      width: 500px;
+      height: 500px;
+      background: url('https://cdn-icons-png.flaticon.com/512/1055/1055672.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.07;
+      z-index: 1;
+      pointer-events: none;
+      filter: grayscale(80%) contrast(50%);
+      transform: rotate(15deg);
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <img class="logo-programacao" src="https://cdn-icons-png.flaticon.com/512/1055/1055672.png" alt="Ícone de programação" />
+    <h2>Faça seu Login</h2>
+    <div id="error" class="error">Usuário ou senha inválidos!</div>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Usuário" required autocomplete="username" />
+      <input type="password" id="password" placeholder="Senha" required autocomplete="current-password" />
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const errorDiv = document.getElementById('error');
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (username === "adm" && password === "0394") {
+        errorDiv.style.display = "none";
+        window.location.href = "index.html";
+      } else {
+        errorDiv.style.display = "block";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aprenda Programação</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #eee;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: -150px;
+      left: -150px;
+      width: 500px;
+      height: 500px;
+      background: url('https://cdn-icons-png.flaticon.com/512/1055/1055672.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.07;
+      z-index: 0;
+      pointer-events: none;
+      filter: grayscale(80%) contrast(50%);
+      transform: rotate(15deg);
+      border-radius: 50%;
+    }
+
+    #relogio {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 1.8rem;
+      background-color: #222;
+      color: #eee;
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.7);
+      z-index: 10;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      user-select: none;
+    }
+
+    header {
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 30px;
+      z-index: 1;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 2.8rem;
+      color: #4caf50;
+      text-shadow: 0 0 8px #4caf50;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    section {
+      max-width: 900px;
+      background-color: rgba(30, 30, 30, 0.9);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.8);
+      z-index: 1;
+    }
+
+    section h2 {
+      color: #4caf50;
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      text-shadow: 0 0 6px #4caf50;
+    }
+
+    section p, section li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #ddd;
+    }
+
+    ul {
+      margin-left: 20px;
+      padding-left: 0;
+      list-style-type: square;
+      color: #bbb;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      margin: 20px auto 30px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+      user-select: none;
+    }
+
+    button {
+      margin-top: 30px;
+      background-color: #4caf50;
+      color: white;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.7);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 300px;
+      user-select: none;
+    }
+
+    button:hover {
+      background-color: #43a047;
+      box-shadow: 0 8px 25px rgba(67, 160, 71, 0.9);
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
+      padding-bottom: 20px;
+      user-select: none;
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      section {
+        padding: 20px 20px;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      section h2 {
+        font-size: 1.4rem;
+      }
+      button {
+        max-width: 100%;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="relogio">00:00:00</div>
+
+  <header>
+    <h1>Aprenda Programação</h1>
+    <p>O primeiro passo para criar seu futuro na tecnologia</p>
+  </header>
+
+  <section>
+    <h2>O que é Programação?</h2>
+    <p>
+      Programação é o processo de criar instruções que dizem ao computador como executar tarefas.
+      É a base do desenvolvimento de software, sites, apps, jogos e muito mais.
+    </p>
+
+    <img src="https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg" alt="Código em tela de computador" />
+
+    <h2>TOP 10 Linguagens de Programação para 2025</h2>
+    <ul>
+      <li>Python</li>
+      <li>Java</li>
+      <li>JavaScript</li>
+      <li>C#</li>
+      <li>TypeScript</li>
+      <li>Go (Golang)</li>
+      <li>C / C++</li>
+      <li>PHP</li>
+      <li>Ruby</li>
+      <li>Swift</li>
+    </ul>
+
+    <h2>Como aprender Programação e por onde começar</h2>
+    <p>Comece com uma linguagem simples como Python ou JavaScript.</p>
+
+    <p>Você tem dois caminhos a seguir:</p>
+    <ul>
+      <li>1. Você pode comprar um curso da sua linguagem escolhida</li>
+      <li>2. Aprender sozinho de graça (Essa é a opção mais difícil, mas totalmente possível)</li>
+    </ul>
+
+    <button onclick="window.location.href='linguagem.html'">
+      Descubra qual linguagem combina com você
+    </button>
+
+    <h2>O que fazer depois de você ter escolhido sua linguagem?</h2>
+
+    <p><b>✅ 1. Entenda os Fundamentos da Linguagem</b></p>
+    <p>Mesmo se for fácil (como Python), aprender os conceitos básicos é essencial.</p>
+    <p>Estude:</p>
+    <ul>
+      <li>Variáveis e tipos de dados</li>
+      <li>Condicionais (if, else, elif)</li>
+      <li>Laços (for, while)</li>
+      <li>Funções</li>
+      <li>Listas/arrays, dicionários</li>
+      <li>Entrada e saída de dados</li>
+    </ul>
+    <p>📚 Dica de plataforma: freeCodeCamp · w3schools · Dev em Dobro</p>
+
+    <p><b>✅ 2. Pratique muito com exercícios simples</b></p>
+    <p>Não só leia — digite, erre, entenda, refaça.</p>
+    <p>Use sites como:</p>
+    <ul>
+      <li>HackerRank</li>
+      <li>Codewars</li>
+      <li>Exercism.io</li>
+    </ul>
+
+    <p><b>✅ 3. Crie pequenos projetos</b></p>
+    <p>Aprender na prática é o que mais fixa o conhecimento.</p>
+    <p>Exemplos de projetos:</p>
+    <ul>
+      <li>Calculadora simples</li>
+      <li>Jogo da adivinhação</li>
+      <li>To-do list (lista de tarefas)</li>
+      <li>Conversor de moedas ou temperatura</li>
+      <li>App de quiz (como você já criou!)</li>
+    </ul>
+
+    <p><b>✅ 4. Aprenda a usar ferramentas básicas</b></p>
+    <p>Saber só código não basta. Aprenda também:</p>
+    <ul>
+      <li>Terminal (prompt, bash, etc.)</li>
+      <li>Git e GitHub (controle de versão)</li>
+      <li>Editores como VSCode</li>
+    </ul>
+
+    <p><b>✅ 5. Explore os frameworks/libraries (depois de dominar a base)</b></p>
+    <p>Só avance para frameworks depois de dominar o básico da linguagem.</p>
+    <p>Exemplos:</p>
+    <ul>
+      <li>Python → Django, Flask</li>
+      <li>JavaScript → React, Vue.js, Node.js</li>
+      <li>Java → Spring Boot</li>
+      <li>C# → .NET</li>
+    </ul>
+
+    <p><b>✅ 6. Participe de comunidades</b></p>
+    <p>Aprenda com os outros e compartilhe suas dúvidas.</p>
+    <ul>
+      <li>Stack Overflow</li>
+      <li>Grupos no Discord ou Telegram</li>
+      <li>Comunidades no GitHub</li>
+      <li>Reddit: r/learnprogramming</li>
+    </ul>
+
+    <p><b>✅ 7. Monte seu portfólio</b></p>
+    <p>Crie um GitHub com seus projetos e vá montando um currículo online.</p>
+    <ul>
+      <li>Use o GitHub Pages para publicar seu site.</li>
+      <li>Mostre que você sabe aplicar o que aprendeu.</li>
+    </ul>
+
+    <p><b>✅ 8. Nunca pare de aprender</b></p>
+    <p>Programação é um mundo em constante evolução.</p>
+    <ul>
+      <li>Aprenda estrutura de dados e algoritmos</li>
+      <li>Estude lógica de programação</li>
+      <li>Aprenda testes, segurança, arquitetura de software</li>
+      <br>
+      <p><b>Abaixo esta um link de algumas linguagens e suas criações mais famosas </b></p>
+      
+    </ul>
+  </section>
+  
+  <button onclick="window.location.href='cs.html'">Criações Famosas por Linguagem de Programação</button>
+
+  <footer>
+    &copy; 2025 Welenton - Site para programadores iniciantes.
+  </footer>
+
+  <script>
+    function atualizarRelogio() {
+      const agora = dayjs();
+      const horaFormatada = agora.format("HH:mm:ss");
+      document.getElementById("relogio").textContent = horaFormatada;
+    }
+    setInterval(atualizarRelogio, 1000);
+    atualizarRelogio();
+  </script>
+<script>
+  function atualizarRelogio() {
+    const agora = dayjs();
+    const horaFormatada = agora.format("HH:mm:ss");
+    document.getElementById("relogio").textContent = horaFormatada;
+  }
+  setInterval(atualizarRelogio, 1000);
+  atualizarRelogio();
+
+  // Animação ao rolar
+  const elementos = document.querySelectorAll('.scroll-animado');
+
+  function verificarScroll() {
+    const alturaTela = window.innerHeight;
+    elementos.forEach(el => {
+      const posicao = el.getBoundingClientRect().top;
+      if (posicao < alturaTela - 100) {
+        el.classList.add('visivel');
+      }
+    });
+  }
+
+  // Garante que o conteúdo visível ao carregar já apareça
+  window.addEventListener('load', verificarScroll);
+  window.addEventListener('scroll', verificarScroll);
+</script>
+<section class="scroll-animado">
+  <h2>O que é Programação?</h2>
+  <p>Texto...</p>
+</section>
+
+</body>
+</html>
