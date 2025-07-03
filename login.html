@@ -1,146 +1,184 @@
-//esse e a base inicial do site sempre começe por aqui
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <title>Login - Aprenda Programação</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-
-    input[type="text"], input[type="password"] {
-  font-family: 'Courier New', Courier, monospace;
-  width: 100%;
-  padding: 14px 18px;
-  margin: 12px 0 25px 0;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  background-color: #222;
-  color: #eee;
-  box-shadow: inset 0 0 8px #000000;
-  transition: box-shadow 0.3s ease;
-}
-
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Roboto', sans-serif;
+      background: radial-gradient(circle at center, #0f2027 0%, #203a43 50%, #2c5364 100%);
       color: #eee;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
       padding: 20px;
       overflow: hidden;
-    }
-
-    .login-container {
-      background-color: rgba(30, 30, 30, 0.9);
-      padding: 40px 50px 50px 50px;
-      border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.8);
-      width: 350px;
-      text-align: center;
       position: relative;
-      z-index: 2;
     }
 
-    .login-container h2 {
-      margin-bottom: 30px;
-      font-weight: 700;
-      font-size: 1.8rem;
-      letter-spacing: 1.2px;
-      color: #4caf50;
-      text-shadow: 0 0 8px #4caf50;
-    }
-
-    input[type="text"], input[type="password"] {
-      width: 100%;
-      padding: 14px 18px;
-      margin: 12px 0 25px 0;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      background-color: #222;
-      color: #eee;
-      box-shadow: inset 0 0 8px #000000;
-      transition: box-shadow 0.3s ease;
-    }
-    input[type="text"]:focus, input[type="password"]:focus {
-      outline: none;
-      box-shadow: 0 0 10px #4caf50;
-      background-color: #333;
-    }
-
-    button {
-      background-color: #4caf50;
-      color: white;
-      padding: 14px 20px;
-      border: none;
-      border-radius: 10px;
-      width: 100%;
-      font-size: 1.2rem;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.6);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    button:hover {
-      background-color: #43a047;
-      box-shadow: 0 6px 20px rgba(67, 160, 71, 0.8);
-    }
-
-    .error {
-      color: #ff5555;
-      margin-bottom: 20px;
-      font-weight: 700;
-      display: none;
-      text-shadow: 0 0 6px #ff5555;
-    }
-
-    /* Imagem no topo */
-    .logo-programacao {
-      width: 120px;
-      margin: 0 auto 25px auto;
-      display: block;
-      filter: drop-shadow(0 0 4px #4caf50);
-    }
-
-    /* Fundo decorativo */
     body::before {
       content: "";
       position: fixed;
-      top: -150px;
-      left: -150px;
-      width: 500px;
-      height: 500px;
-      background: url('https://cdn-icons-png.flaticon.com/512/1055/1055672.png') no-repeat center center;
-      background-size: contain;
-      opacity: 0.07;
-      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/cubes.png');
+      opacity: 0.02;
+      z-index: 0;
       pointer-events: none;
-      filter: grayscale(80%) contrast(50%);
-      transform: rotate(15deg);
-      border-radius: 50%;
+    }
+
+    .login-container {
+      background: rgba(20, 20, 20, 0.95);
+      padding: 40px 50px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0,255,0,0.15), 0 0 80px rgba(0,255,100,0.07);
+      width: 360px;
+      text-align: center;
+      z-index: 1;
+      position: relative;
+      backdrop-filter: blur(4px);
+    }
+
+    .logo-programacao {
+      width: 90px;
+      margin: 0 auto 20px;
+      display: block;
+      filter: drop-shadow(0 0 6px #09ff00);
+    }
+
+    h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      letter-spacing: 1.5px;
+    }
+
+    .rgb-vibrant {
+      animation: rgbText 6s linear infinite;
+    }
+
+    @keyframes rgbText {
+      0%   { color: rgb(255, 0, 0);    text-shadow: 0 0 10px rgb(255, 0, 0); }
+      10%  { color: rgb(255, 127, 0);  text-shadow: 0 0 10px rgb(255, 127, 0); }
+      20%  { color: rgb(255, 255, 0);  text-shadow: 0 0 10px rgb(255, 255, 0); }
+      30%  { color: rgb(0, 255, 0);    text-shadow: 0 0 10px rgb(0, 255, 0); }
+      40%  { color: rgb(0, 255, 255);  text-shadow: 0 0 10px rgb(0, 255, 255); }
+      50%  { color: rgb(0, 0, 255);    text-shadow: 0 0 10px rgb(0, 0, 255); }
+      60%  { color: rgb(138, 43, 226); text-shadow: 0 0 10px rgb(138, 43, 226); }
+      70%  { color: rgb(255, 0, 255);  text-shadow: 0 0 10px rgb(255, 0, 255); }
+      80%  { color: rgb(255, 20, 147); text-shadow: 0 0 10px rgb(255, 20, 147); }
+      90%  { color: rgb(0, 255, 204);  text-shadow: 0 0 10px rgb(0, 255, 204); }
+      100% { color: rgb(51, 204, 255); text-shadow: 0 0 10px rgb(51, 204, 255); }
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      font-family: 'Courier New', monospace;
+      width: 100%;
+      padding: 14px 18px;
+      margin: 12px 0 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: #111;
+      color: #0f0;
+      box-shadow: inset 0 0 6px #0f0;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      background-color: #222;
+      box-shadow: 0 0 10px #00ff99;
+    }
+
+    button {
+      background: linear-gradient(90deg, #00c853, #00e676);
+      color: black;
+      padding: 14px;
+      width: 100%;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 255, 100, 0.3);
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #00e676, #00c853);
+      box-shadow: 0 0 15px #00ff99;
+    }
+
+    .error, .success {
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 0 0 6px;
+      display: none;
+    }
+
+    .error {
+      color: #ff4444;
+      text-shadow: 0 0 6px #ff4444;
+    }
+
+    .success {
+      color: #00ff88;
+      text-shadow: 0 0 10px #00ff88;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .footer-note {
+      font-size: 0.9rem;
+      margin-top: 25px;
+      color: #ccc;
+      font-style: italic;
+      opacity: 0.7;
+    }
+
+    .footer-note code {
+      color: #00ff88;
+      font-family: 'Courier New', monospace;
     }
   </style>
 </head>
 <body>
   <div class="login-container">
     <img class="logo-programacao" src="https://cdn-icons-png.flaticon.com/512/1055/1055672.png" alt="Ícone de programação" />
-    <h2>Faça seu Login</h2>
-    <div id="error" class="error">Usuário ou senha inválidos!</div>
+    <h2 class="rgb-vibrant">Faça seu Login</h2>
+
+    <div id="error" class="error">🚫 Login falhou! Até o R2-D2 digitava melhor que isso...</div>
+    <div id="success" class="success">✅ Login realizado com sucesso! Redirecionando...</div>
+
     <form id="loginForm">
       <input type="text" id="username" placeholder="Usuário" required autocomplete="username" />
       <input type="password" id="password" placeholder="Senha" required autocomplete="current-password" />
       <button type="submit">Entrar</button>
     </form>
+
+    <div class="footer-note">⚡ Aprender a programar é como hackear o universo com <code>CÓDIGO</code>.</div>
   </div>
 
   <script>
     const loginForm = document.getElementById('loginForm');
     const errorDiv = document.getElementById('error');
+    const successDiv = document.getElementById('success');
 
     loginForm.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -148,10 +186,15 @@
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value.trim();
 
-      if (username === "adm" && password === "0394") {
+      if (username === "adm" && password === "https://cdn-icons-png.flaticon.com/512/1055/1055672.png") {
         errorDiv.style.display = "none";
-        window.location.href = "index.html";
+        successDiv.style.display = "block";
+
+        setTimeout(() => {
+          window.location.href = "1.html";
+        }, 1500);
       } else {
+        successDiv.style.display = "none";
         errorDiv.style.display = "block";
       }
     });
