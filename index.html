@@ -22,6 +22,14 @@
       flex-direction: column;
       align-items: center;
       overflow-x: hidden;
+
+      /* fade-in inicial */
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
+
+    body.mostrar {
+      opacity: 1;
     }
 
     #relogio {
@@ -199,6 +207,13 @@
     }
     setInterval(atualizarRelogio, 1000);
     atualizarRelogio();
+
+    // Aparecer após 3 segundos
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.body.classList.add('mostrar');
+      }, 500);
+    });
   </script>
 </body>
 </html>
