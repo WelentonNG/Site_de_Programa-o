@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Descubra sua linguagem ideal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
@@ -73,6 +73,7 @@
       box-shadow: 0 0 12px red;
       cursor: pointer;
       transition: 0.3s;
+      user-select: none;
     }
 
     button:hover {
@@ -96,6 +97,7 @@
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 0 12px red;
+      min-height: 48px;
     }
 
     @keyframes rgbText {
@@ -157,45 +159,35 @@
       </div>
     </div>
 
-    <div class="pergunta" id="pacienciaContainer">
-      <h2>😌 Qual seu nível de paciência?</h2>
-      <div class="opcoes">
-        <button onclick="escolherPaciencia(this, 'pouca')">Pouca</button>
-        <button onclick="escolherPaciencia(this, 'media')">Média</button>
-        <button onclick="escolherPaciencia(this, 'muita')">Muita</button>
-      </div>
-    </div>
-
     <div id="resultado"></div>
   </div>
 
   <script>
     let projeto = null;
     let tempo = null;
-    let paciencia = null;
 
     function escolherProjeto(botao, valor) {
-      const desmarcado = marcarSelecionado("projetoContainer", botao);
-      projeto = desmarcado ? null : valor;
+      if (marcarSelecionado("projetoContainer", botao)) {
+        projeto = null;
+      } else {
+        projeto = valor;
+      }
       verificarEscolhas();
     }
 
     function escolherTempo(botao, valor) {
-      const desmarcado = marcarSelecionado("tempoContainer", botao);
-      tempo = desmarcado ? null : valor;
-      verificarEscolhas();
-    }
-
-    function escolherPaciencia(botao, valor) {
-      const desmarcado = marcarSelecionado("pacienciaContainer", botao);
-      paciencia = desmarcado ? null : valor;
+      if (marcarSelecionado("tempoContainer", botao)) {
+        tempo = null;
+      } else {
+        tempo = valor;
+      }
       verificarEscolhas();
     }
 
     function marcarSelecionado(idContainer, botaoSelecionado) {
       const container = document.getElementById(idContainer);
       const botoes = container.querySelectorAll("button");
-      let jaSelecionado = botaoSelecionado.classList.contains("selecionado");
+      const jaSelecionado = botaoSelecionado.classList.contains("selecionado");
       botoes.forEach(btn => btn.classList.remove("selecionado"));
       if (!jaSelecionado) {
         botaoSelecionado.classList.add("selecionado");
@@ -205,20 +197,73 @@
     }
 
     function verificarEscolhas() {
-      if (projeto && tempo && paciencia) {
-        const linguagem = recomendarLinguagem(projeto, tempo, paciencia);
+      if (projeto && tempo) {
+        const linguagem = recomendarLinguagem(projeto, tempo);
         document.getElementById("resultado").innerText = `🎯 Recomendamos que você aprenda: ${linguagem}`;
       } else {
         document.getElementById("resultado").innerText = "";
       }
     }
 
-    // mantém sua lógica de recomendação
-    function recomendarLinguagem(projeto, tempo, paciencia) {
-      // mesma lógica que você já usou, mantida aqui
-      // ...
-      return "Python"; // valor padrão temporário para economizar espaço aqui
-    }
+   function recomendarLinguagem(projeto, tempo) {
+  switch(projeto) {
+    case 'jogos':
+      if (tempo === 'pouco') return 'JavaScript (Phaser)';
+      if (tempo === 'medio') return 'C# (Unity)';
+      return 'C++ (Unreal Engine)';
+    case 'sites':
+      if (tempo === 'pouco') return 'HTML, CSS e JavaScript básico';
+      if (tempo === 'medio') return 'JavaScript (React / Vue)';
+      return 'JavaScript avançado + frameworks modernos';
+    case 'automacao':
+      if (tempo === 'pouco') return 'Python (scripts simples)';
+      if (tempo === 'medio') return 'Python com automação avançada';
+      return 'Python avançado com automação e APIs';
+    case 'sistemas':
+      if (tempo === 'pouco') return 'Java';
+      if (tempo === 'medio') return 'C#';
+      return 'C / C++';
+    case 'apps':
+      if (tempo === 'pouco') return 'JavaScript (React Native)';
+      if (tempo === 'medio') return 'Dart (Flutter)';
+      return 'Kotlin / Swift (nativo)';
+    case 'bots':
+      if (tempo === 'pouco') return 'Python (scripts simples)';
+      if (tempo === 'medio') return 'Python com bibliotecas';
+      return 'Python avançado';
+    case 'ia':
+      if (tempo === 'pouco') return 'Python (bibliotecas básicas de IA)';
+      if (tempo === 'medio') return 'Python com Machine Learning';
+      return 'Python avançado em Deep Learning';
+    case 'dados':
+      if (tempo === 'pouco') return 'Python (Pandas básico)';
+      if (tempo === 'medio') return 'Python para Análise e Visualização';
+      return 'Python + R para ciência de dados';
+    case 'api':
+      if (tempo === 'pouco') return 'JavaScript (Node.js básico)';
+      if (tempo === 'medio') return 'JavaScript (Node.js + Express)';
+      return 'Node.js avançado + GraphQL';
+    case 'iot':
+      if (tempo === 'pouco') return 'C (Arduino básico)';
+      if (tempo === 'medio') return 'C++ para IoT';
+      return 'Python e C avançado para IoT';
+    case 'devops':
+      if (tempo === 'pouco') return 'Bash / Python básico';
+      if (tempo === 'medio') return 'Python + Docker';
+      return 'Kubernetes + Ansible + Python avançado';
+    case 'extensoes':
+      if (tempo === 'pouco') return 'JavaScript básico';
+      if (tempo === 'medio') return 'JavaScript + APIs de navegador';
+      return 'JavaScript avançado + frameworks';
+    case 'blockchain':
+      if (tempo === 'pouco') return 'Solidity básico';
+      if (tempo === 'medio') return 'Solidity + Hardhat / Truffle';
+      return 'Blockchain avançado + contratos inteligentes';
+    default:
+      return 'Python';
+  }
+}
+
   </script>
 </body>
 </html>
