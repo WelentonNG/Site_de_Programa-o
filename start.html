@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <title>Redirecionamento de Links</title>
-  <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
     body {
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #eee;
+      background: url('https://images.alphacoders.com/137/1370166.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fbeaea;
       margin: 0;
       padding: 20px;
       display: flex;
@@ -25,11 +25,12 @@
       top: 20px;
       right: 20px;
       font-size: 1.8rem;
-      background-color: #222;
-      color: #eee;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #ff4d4d;
       padding: 10px 15px;
       border-radius: 8px;
       z-index: 10;
+      box-shadow: 0 0 12px red;
     }
 
     header {
@@ -38,53 +39,82 @@
     }
 
     header h1 {
-      font-size: 2.5rem;
-      color: #4caf50;
-      text-shadow: 0 0 8px #4caf50;
+      font-size: 2.2rem;
+      color: #ff1a1a;
+      text-shadow: 0 0 12px #ff1a1a;
       margin-bottom: 10px;
+      animation: brilho 4s infinite;
     }
 
     header p {
       font-size: 1.2rem;
-      color: #ccc;
+      color: #f5bebe;
     }
 
-   
-
     section {
-      background-color: rgba(30, 30, 30, 0.9);
+      background-color: rgba(20, 0, 0, 0.75);
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.8);
+      box-shadow: 0 8px 30px rgba(255, 0, 0, 0.3);
       text-align: center;
       width: 100%;
       max-width: 600px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 0, 0, 0.2);
     }
 
     .link-btn {
       display: block;
       margin: 15px auto;
-      background-color: #4caf50;
+      background-color: #ff1a1a;
       color: white;
       padding: 12px 20px;
       border: none;
       border-radius: 10px;
       font-size: 1.2rem;
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.7);
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.7);
       text-decoration: none;
-      transition: 0.3s;
+      transition: all 0.3s ease;
     }
 
     .link-btn:hover {
-      background-color: #43a047;
-      box-shadow: 0 8px 25px rgba(67, 160, 71, 0.9);
+      background-color: #ff3333;
+      box-shadow: 0 0 18px rgba(255, 70, 70, 0.9);
+      transform: scale(1.03);
     }
 
     footer {
       margin-top: 40px;
       text-align: center;
-      color: #888;
+      color: #ffaaaa;
+      text-shadow: 0 0 6px rgba(255, 0, 0, 0.4);
+    }
+
+    @keyframes brilho {
+      0%, 100% { text-shadow: 0 0 12px red; }
+      50% { text-shadow: 0 0 20px #ff1a1a; }
+    }
+
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1c1c1c;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #ff1a1a;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+      .link-btn {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -93,13 +123,13 @@
   <div id="relogio">00:00:00</div>
 
   <header>
-       <h1>Curso de graça para você sem dinheiro</h1>
+    <h1>Curso de graça para você sem dinheiro</h1>
     <p>Escolha para onde deseja ser redirecionado:</p>
   </header>
 
   <section>
     <a class="link-btn" href="" target="_blank">Python</a>
-    <a class="link-btn" href="" target="_blank">Html,Css,JavaScript</a>
+    <a class="link-btn" href="" target="_blank">HTML, CSS, JavaScript</a>
     <a class="link-btn" href="" target="_blank">Java</a>
     <a class="link-btn" href="" target="_blank">C</a>
     <a class="link-btn" href="" target="_blank">C#</a>
@@ -107,10 +137,6 @@
     <a class="link-btn" href="" target="_blank">TypeScript</a>
     <a class="link-btn" href="" target="_blank">Kotlin</a>
     <a class="link-btn" href="" target="_blank">Node.js</a>
-    
-
-
-    
   </section>
 
   <footer>
