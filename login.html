@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <title>Login - Aprenda Programação</title>
+  <title>lOgIn</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -13,54 +13,56 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-      background: radial-gradient(circle at center, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      background: url('https://images.alphacoders.com/137/1370166.png') no-repeat center center fixed;
+      background-size: cover;
       color: #eee;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      padding: 20px;
       overflow: hidden;
-      position: relative;
+      padding: 30px;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       width: 100%;
-      height: 100%;
-      background: url('https://www.transparenttextures.com/patterns/cubes.png');
-      opacity: 0.02;
-      z-index: 0;
-      pointer-events: none;
+      max-width: 1000px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+      padding: 40px;
+      gap: 30px;
+    }
+
+    .logo-side {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-side img {
+      max-width: 220px;
+      filter: drop-shadow(0 0 8px red);
     }
 
     .login-container {
-      background: rgba(20, 20, 20, 0.95);
-      padding: 40px 50px;
+      flex: 1;
+      background: rgba(10, 0, 0, 0.9);
+      padding: 40px;
       border-radius: 15px;
-      box-shadow: 0 0 30px rgba(0,255,0,0.15), 0 0 80px rgba(0,255,100,0.07);
-      width: 360px;
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
       text-align: center;
-      z-index: 1;
-      position: relative;
-      backdrop-filter: blur(4px);
-    }
-
-    .logo-programacao {
-      width: 90px;
-      margin: 0 auto 20px;
-      display: block;
-      filter: drop-shadow(0 0 6px #09ff00);
     }
 
     h2 {
-      font-size: 1.9rem;
+      font-size: 2rem;
       font-weight: 700;
       margin-bottom: 25px;
-      letter-spacing: 1.5px;
     }
 
     .rgb-vibrant {
@@ -68,17 +70,11 @@
     }
 
     @keyframes rgbText {
-      0%   { color: rgb(255, 0, 0);    text-shadow: 0 0 10px rgb(255, 0, 0); }
-      10%  { color: rgb(255, 127, 0);  text-shadow: 0 0 10px rgb(255, 127, 0); }
-      20%  { color: rgb(255, 255, 0);  text-shadow: 0 0 10px rgb(255, 255, 0); }
-      30%  { color: rgb(0, 255, 0);    text-shadow: 0 0 10px rgb(0, 255, 0); }
-      40%  { color: rgb(0, 255, 255);  text-shadow: 0 0 10px rgb(0, 255, 255); }
-      50%  { color: rgb(0, 0, 255);    text-shadow: 0 0 10px rgb(0, 0, 255); }
-      60%  { color: rgb(138, 43, 226); text-shadow: 0 0 10px rgb(138, 43, 226); }
-      70%  { color: rgb(255, 0, 255);  text-shadow: 0 0 10px rgb(255, 0, 255); }
-      80%  { color: rgb(255, 20, 147); text-shadow: 0 0 10px rgb(255, 20, 147); }
-      90%  { color: rgb(0, 255, 204);  text-shadow: 0 0 10px rgb(0, 255, 204); }
-      100% { color: rgb(51, 204, 255); text-shadow: 0 0 10px rgb(51, 204, 255); }
+      0%   { color: red;             text-shadow: 0 0 10px red; }
+      25%  { color: #ff3333;         text-shadow: 0 0 10px #ff3333; }
+      50%  { color: #cc0000;         text-shadow: 0 0 10px #cc0000; }
+      75%  { color: #ff1a1a;         text-shadow: 0 0 10px #ff1a1a; }
+      100% { color: #ff0000;         text-shadow: 0 0 10px #ff0000; }
     }
 
     input[type="text"],
@@ -91,19 +87,19 @@
       border-radius: 8px;
       font-size: 1rem;
       background-color: #111;
-      color: #0f0;
-      box-shadow: inset 0 0 6px #0f0;
+      color: #f00;
+      box-shadow: inset 0 0 6px red;
       transition: 0.3s;
     }
 
     input:focus {
       outline: none;
       background-color: #222;
-      box-shadow: 0 0 10px #00ff99;
+      box-shadow: 0 0 10px #ff0033;
     }
 
     button {
-      background: linear-gradient(90deg, #00c853, #00e676);
+      background: linear-gradient(90deg, #ff0000, #cc0000);
       color: black;
       padding: 14px;
       width: 100%;
@@ -112,13 +108,13 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 255, 100, 0.3);
+      box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
       transition: 0.3s;
     }
 
     button:hover {
-      background: linear-gradient(90deg, #00e676, #00c853);
-      box-shadow: 0 0 15px #00ff99;
+      background: linear-gradient(90deg, #cc0000, #ff0000);
+      box-shadow: 0 0 15px #ff0033;
     }
 
     .error, .success {
@@ -129,13 +125,13 @@
     }
 
     .error {
-      color: #ff4444;
+      color: #00d9ff;
       text-shadow: 0 0 6px #ff4444;
     }
 
     .success {
-      color: #00ff88;
-      text-shadow: 0 0 10px #00ff88;
+      color: #ff0000;
+      text-shadow: 0 0 10px #ffffff;
       animation: fadeIn 0.5s ease;
     }
 
@@ -146,33 +142,50 @@
 
     .footer-note {
       font-size: 0.9rem;
-      margin-top: 25px;
-      color: #ccc;
+      margin-top: 20px;
+      color: #aaa;
       font-style: italic;
-      opacity: 0.7;
+      opacity: 0.8;
     }
 
     .footer-note code {
-      color: #00ff88;
+      color: #ff3333;
       font-family: 'Courier New', monospace;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+      }
+      .logo-side img {
+        max-width: 150px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <img class="logo-programacao" src="https://cdn-icons-png.flaticon.com/512/1055/1055672.png" alt="Ícone de programação" />
-    <h2 class="rgb-vibrant">Faça seu Login</h2>
+  <div class="container">
+    <div class="logo-side">
+     <img src="" alt="Nova Logo" />
 
-    <div id="error" class="error">🚫 Login falhou! Até o R2-D2 digitava melhor que isso...</div>
-    <div id="success" class="success">✅ Login realizado com sucesso! Redirecionando...</div>
+    </div>
 
-    <form id="loginForm">
-      <input type="text" id="username" placeholder="Usuário" required autocomplete="username" />
-      <input type="password" id="password" placeholder="Senha" required autocomplete="current-password" />
-      <button type="submit">Entrar</button>
-    </form>
+    <div class="login-container">
+      <h2 class="rgb-vibrant">Acesso ao Site</h2>
 
-    <div class="footer-note">⚡ Aprender a programar é como hackear o universo com <code>CÓDIGO</code>.</div>
+      <div id="error" class="error"> Login inválido. Tente novamente!</div>
+      <div id="success" class="success"> Login aprovado! Redirecionando...</div>
+
+      <form id="loginForm">
+        <input type="text" id="username" placeholder="Usuário" required autocomplete="username" />
+        <input type="password" id="password" placeholder="Senha" required autocomplete="current-password" />
+        <button type="submit">Entrar</button>
+      </form>
+
+     
+    </div>
   </div>
 
   <script>
@@ -186,12 +199,12 @@
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value.trim();
 
-      if (username === "adm" && password === "https://cdn-icons-png.flaticon.com/512/1055/1055672.png") {
+      if (username === "adm" && password === "0394") {
         errorDiv.style.display = "none";
         successDiv.style.display = "block";
 
         setTimeout(() => {
-          window.location.href = "1.html";
+          window.location.href = "index.html";
         }, 1500);
       } else {
         successDiv.style.display = "none";

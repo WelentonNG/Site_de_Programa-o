@@ -2,56 +2,61 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <title>Criações Famosas por Linguagem de Programação - Tema Verde</title>
+  <title>Criações Famosas por Linguagem de Programação</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
     body {
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(to right, #0d0d0d, #1b2b1b);
-      color: #e0e0e0;
+      background: url('https://images.alphacoders.com/137/1370166.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fdd;
       margin: 20px;
       padding-bottom: 40px;
     }
 
     h1 {
-      color: #66ff99;
+      color: #ff0000;
       text-align: center;
       margin-bottom: 40px;
-      text-shadow: 0 0 10px #4caf50;
+      text-shadow: 0 0 12px red;
       font-size: 2.6rem;
+      animation: brilho 4s infinite;
     }
 
     h2 {
-      color: #66ff99;
+      color: #ff4d4d;
       margin-top: 30px;
-      border-bottom: 2px solid #4caf50;
+      border-bottom: 2px solid #cc0000;
       padding-bottom: 5px;
-      text-shadow: 0 0 6px #4caf50;
+      text-shadow: 0 0 6px #ff1a1a;
     }
 
     ul {
       list-style-type: disc;
       margin-left: 20px;
-      color: #cfd8dc;
+      color: #fcecec;
     }
 
     .linguagem {
-      background-color: #1c1c1c;
+      background-color: rgba(0, 0, 0, 0.75);
       padding: 20px;
       border-radius: 12px;
       margin-bottom: 25px;
-      box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
-      transition: background-color 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+      border: 1px solid rgba(255, 0, 0, 0.2);
+      backdrop-filter: blur(3px);
+      transition: background-color 0.3s ease, transform 0.2s;
     }
 
     .linguagem:hover {
-      background-color: #242424;
+      background-color: rgba(10, 0, 0, 0.85);
+      transform: translateY(-4px);
     }
 
     .nota {
       font-style: italic;
-      color: #a5d6a7;
+      color: #ffaaaa;
       margin-top: 10px;
     }
 
@@ -65,8 +70,28 @@
     }
 
     ::-webkit-scrollbar-thumb {
-      background-color: #4caf50;
+      background-color: #ff1a1a;
       border-radius: 4px;
+    }
+
+    @keyframes brilho {
+      0% { text-shadow: 0 0 12px red; }
+      50% { text-shadow: 0 0 20px #ff1a1a; }
+      100% { text-shadow: 0 0 12px red; }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
     }
   </style>
 </head>
