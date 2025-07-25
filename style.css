@@ -13,7 +13,7 @@
 }
 
 header h1 {
-  animation: balancar 2s infinite ease-in-out;
+  animation: balancar 1s infinite ease-in-out;
 }
 
 .scroll-animado {

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>IDE JavaScript</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #120000; /* preto com tom avermelhado */
+      color: #f44336; /* vermelho */
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 10px;
+      background: #2a0000; /* tom escuro de vermelho */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #f44336;
+      color: #f44336;
+      font-weight: bold;
+    }
+
+    #container {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      border-top: 2px solid #f44336;
+    }
+
+    #editor {
+      width: 65%;
+      height: 100%;
+      border-right: 2px solid #f44336;
+    }
+
+    #output-panel {
+      width: 35%;
+      background: #1a0000;
+      padding: 10px;
+      overflow-y: auto;
+      color: #f44336;
+      font-weight: 600;
+    }
+
+    #output {
+      white-space: pre-wrap;
+      font-family: monospace;
+      color: #ff7961; /* vermelho mais claro para saída */
+    }
+
+    button {
+      padding: 8px 16px;
+      margin-right: 10px;
+      cursor: pointer;
+      border: 2px solid #f44336;
+      border-radius: 4px;
+      background: #2a0000;
+      color: #f44336;
+      font-weight: 600;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    button:hover {
+      background: #f44336;
+      color: #1a0000;
+      border-color: #f44336;
+    }
+
+    h3 {
+      margin-top: 0;
+      color: #f44336;
+      text-shadow: 0 0 8px #f44336;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <button onclick="executar()">▶️ Executar</button>
+      <button onclick="salvar()">💾 Salvar</button>
+      <button onclick="limpar()">🧹 Limpar</button>
+    </div>
+    <strong>IDE JavaScript</strong>
+  </header>
+
+  <div id="container">
+    <div id="editor"></div>
+    <div id="output-panel">
+      <h3>🖥️ Saída:</h3>
+      <div id="output"></div>
+    </div>
+  </div>
+
+  <!-- Monaco Editor -->
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+  <script>
+    let editor;
+    const STORAGE_KEY = "meu_codigo_js";
+
+    require.config({ paths: { vs: "https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs" } });
+    require(["vs/editor/editor.main"], function () {
+      const codigoSalvo = localStorage.getItem(STORAGE_KEY) || 
+        `function saudacao(nome) {\n  console.log("Olá, " + nome);\n}\n\nsaudacao("Mundo");`;
+
+      editor = monaco.editor.create(document.getElementById("editor"), {
+        value: codigoSalvo,
+        language: "javascript",
+        theme: "vs-dark",
+        automaticLayout: true
+      });
+    });
+
+    function executar() {
+      const codigo = editor.getValue();
+      const output = document.getElementById("output");
+      let resultado = "";
+
+      const consoleOriginal = console.log;
+      console.log = (...args) => resultado += args.join(" ") + "\n";
+
+      try {
+        eval(codigo);
+        output.textContent = resultado || "✔️ Código executado sem saída.";
+      } catch (erro) {
+        output.textContent = "❌ Erro: " + erro.message;
+      }
+
+      console.log = consoleOriginal;
+    }
+
+    function salvar() {
+      const codigo = editor.getValue();
+      localStorage.setItem(STORAGE_KEY, codigo);
+      alert("✅ Código salvo com sucesso!");
+    }
+
+    function limpar() {
+      if (confirm("Tem certeza que deseja apagar o código salvo?")) {
+        localStorage.removeItem(STORAGE_KEY);
+        editor.setValue("");
+        document.getElementById("output").textContent = "";
+      }
+    }
+  </script>
+</body>
+</html>

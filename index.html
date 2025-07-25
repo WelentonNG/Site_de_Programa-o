@@ -5,33 +5,42 @@
   <title>Aprenda Programação</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    /* Reset básico */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    /* Corpo */
     body {
       font-family: 'Roboto', sans-serif;
       background: url('https://images.alphacoders.com/137/1370166.png') no-repeat center center fixed;
       background-size: cover;
       color: #eee;
       min-height: 100vh;
-      padding: 40px 20px;
+      padding: 40px 20px 80px;
       display: flex;
       flex-direction: column;
       align-items: center;
       overflow-x: hidden;
-
-      /* fade-in inicial */
       opacity: 0;
-      transition: opacity 2s ease;
+      transition: opacity 1.5s ease;
     }
-
     body.mostrar {
       opacity: 1;
     }
 
+    /* Filtro escuro para melhor leitura - mais transparente */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(18, 0, 0, 0.2);
+      z-index: -1;
+    }
+
+    /* Relógio fixo */
     #relogio {
       position: fixed;
       top: 20px;
@@ -43,157 +52,220 @@
       border-radius: 10px;
       box-shadow: 0 0 15px red;
       z-index: 10;
+      user-select: none;
+      font-weight: 700;
+      font-family: monospace;
     }
 
+    /* Header */
     header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      max-width: 900px;
+      width: 100%;
     }
-
     header h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: 700;
       color: #ff0000;
-      text-shadow: 0 0 10px red;
+      text-shadow: 0 0 15px red;
       animation: rgbText 6s linear infinite;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
     }
-
     header p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #ccc;
+      font-weight: 400;
+      text-shadow: 0 0 8px #660000;
     }
 
-    section {
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(6px);
-      padding: 30px 40px;
+    /* Container principal */
+    main {
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
       border-radius: 20px;
-      box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+      box-shadow: 0 0 40px rgba(255, 0, 0, 0.35);
       max-width: 900px;
-      margin-bottom: 40px;
+      width: 100%;
+      padding: 40px 40px 50px;
+      color: #eee;
+    }
+
+    /* Seções */
+    section {
+      margin-bottom: 50px;
     }
 
     section h2 {
       color: #ff0000;
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin-bottom: 15px;
-      text-shadow: 0 0 8px red;
+      text-shadow: 0 0 10px red;
+      border-bottom: 2px solid #ff0000;
+      padding-bottom: 6px;
     }
 
     section p,
     section li {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       line-height: 1.6;
-      color: #eee;
+      color: #ddd;
+      margin-bottom: 12px;
     }
 
     ul {
       list-style-type: square;
-      margin-left: 20px;
+      margin-left: 24px;
       color: #f99;
+      margin-bottom: 20px;
     }
 
     img {
       max-width: 100%;
-      border-radius: 10px;
+      border-radius: 12px;
       margin: 20px 0 30px;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    img:hover {
+      transform: scale(1.05);
     }
 
-    button {
-      display: block;
-      margin: 20px auto;
+    /* Botões principais */
+    .btn {
+      display: inline-block;
+      margin: 12px 10px 0 0;
       padding: 14px 30px;
-      font-size: 1.2rem;
-      font-weight: bold;
+      font-size: 1.15rem;
+      font-weight: 700;
       color: black;
       background: linear-gradient(90deg, #ff0000, #cc0000);
       border: none;
-      border-radius: 12px;
+      border-radius: 14px;
       cursor: pointer;
-      box-shadow: 0 0 15px red;
-      transition: 0.3s;
+      box-shadow: 0 0 18px red;
+      transition: background 0.4s, box-shadow 0.4s;
+      text-align: center;
+      text-decoration: none;
+      user-select: none;
     }
-
-    button:hover {
+    .btn:hover {
       background: linear-gradient(90deg, #cc0000, #ff0000);
-      box-shadow: 0 0 20px #ff0033;
+      box-shadow: 0 0 28px #ff0033;
     }
 
+    /* Botões rodapé */
+    .btn-group {
+      text-align: center;
+      margin-top: -20px;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      color: #999;
+      color: #aaa;
       font-size: 0.9rem;
-      margin-top: 30px;
+      margin-top: 40px;
+      user-select: none;
     }
-
+    
+    /* Animação do texto */
     @keyframes rgbText {
-      0% { color: red; text-shadow: 0 0 10px red; }
-      25% { color: #ff3333; text-shadow: 0 0 10px #ff3333; }
-      50% { color: #cc0000; text-shadow: 0 0 10px #cc0000; }
-      75% { color: #ff1a1a; text-shadow: 0 0 10px #ff1a1a; }
-      100% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
+      0% { color: #ff0000; text-shadow: 0 0 15px #ff0000; }
+      25% { color: #ff4d4d; text-shadow: 0 0 15px #ff4d4d; }
+      50% { color: #cc0000; text-shadow: 0 0 15px #cc0000; }
+      75% { color: #ff1a1a; text-shadow: 0 0 15px #ff1a1a; }
+      100% { color: #ff0000; text-shadow: 0 0 15px #ff0000; }
     }
 
-    @media (max-width: 600px) {
-      section {
-        padding: 20px;
+    /* Responsividade */
+    @media (max-width: 700px) {
+      body {
+        padding: 30px 15px 70px;
       }
       header h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
+      }
+      main {
+        padding: 25px 20px 35px;
+      }
+      section h2 {
+        font-size: 1.6rem;
+      }
+      section p, section li {
+        font-size: 1rem;
+      }
+      .btn {
+        font-size: 1rem;
+        padding: 12px 24px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div id="relogio">00:00:00</div>
+  <div id="relogio" aria-label="Relógio digital">00:00:00</div>
 
   <header>
     <h1>Aprenda Programação</h1>
     <p>O primeiro passo para criar seu futuro na tecnologia</p>
   </header>
 
-  <section>
-    <h2>O que é Programação?</h2>
-    <p>Programação é o processo de criar instruções que dizem ao computador como executar tarefas...</p>
+  <main>
+    <section>
+      <h2>O que é Programação?</h2>
+      <p>Programação é o processo de criar instruções que dizem ao computador como executar tarefas específicas. É a base da tecnologia moderna, permitindo desenvolver softwares, aplicativos, sites, jogos e muito mais.</p>
+      <img src="https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg" alt="Tela com código de programação" />
+    </section>
 
-    <img src="https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg" alt="Código em tela" />
+    <section>
+      <h2>TOP 10 Linguagens de Programação para 2025</h2>
+      <ul>
+        <li>Python – Versátil, fácil de aprender e muito usado em ciência de dados, IA e web.</li>
+        <li>Java – Popular para aplicativos corporativos e Android.</li>
+        <li>JavaScript – A linguagem da web, essencial para front-end e back-end.</li>
+        <li>C# – Amplamente usada no desenvolvimento de jogos e aplicações Windows.</li>
+        <li>TypeScript – Superset do JavaScript com tipagem estática para projetos grandes.</li>
+        <li>Go (Golang) – Linguagem rápida e eficiente, ideal para sistemas e servidores.</li>
+        <li>C / C++ – Clássicos para sistemas embarcados, jogos e software de alto desempenho.</li>
+        <li>PHP – Muito usado para desenvolvimento web e CMSs.</li>
+        <li>Ruby – Famosa pela simplicidade e pelo framework Rails.</li>
+        <li>Swift – Linguagem para desenvolvimento iOS/macOS.</li>
+      </ul>
+    </section>
 
-    <h2>TOP 10 Linguagens de Programação para 2025</h2>
-    <ul>
-      <li>Python</li>
-      <li>Java</li>
-      <li>JavaScript</li>
-      <li>C#</li>
-      <li>TypeScript</li>
-      <li>Go (Golang)</li>
-      <li>C / C++</li>
-      <li>PHP</li>
-      <li>Ruby</li>
-      <li>Swift</li>
-    </ul>
+    <section>
+      <h2>Como começar a aprender Programação?</h2>
+      <p>Escolha uma linguagem que se alinhe com seus objetivos. Comece com tutoriais básicos, pratique bastante e explore projetos simples.</p>
+      <ul>
+        <li>Entenda os conceitos básicos como variáveis, condicionais e loops.</li>
+        <li>Pratique resolvendo problemas e desafios.</li>
+        <li>Explore plataformas online como Codecademy, freeCodeCamp e Khan Academy.</li>
+      </ul>
+      <a href="linguagem.html" class="btn" role="button">Descubra qual linguagem combina com você</a>
+    </section>
 
-    <h2>Como aprender Programação</h2>
-    <p>Comece com uma linguagem simples como Python ou JavaScript...</p>
+    <section>
+      <h2>O que fazer depois?</h2>
+      <ul>
+        <li>Aprenda controle de versão com Git e GitHub.</li>
+        <li>Explore editores de código e terminais.</li>
+        <li>Construa pequenos projetos para ganhar prática.</li>
+        <li>Estude frameworks populares para a linguagem escolhida.</li>
+        <li>Participe de comunidades online para trocar experiências.</li>
+        <li>Monte seu portfólio e prepare-se para oportunidades.</li>
+        <li>Mantenha-se atualizado e nunca pare de aprender.</li>
+      </ul>
+    </section>
 
-    <button onclick="window.location.href='linguagem.html'">Descubra qual linguagem combina com você</button>
-
-    <h2>O que fazer depois?</h2>
-    <ul>
-      <li>Entenda os fundamentos</li>
-      <li>Pratique com exercícios</li>
-      <li>Crie projetos pequenos</li>
-      <li>Aprenda Git, terminal e editores</li>
-      <li>Explore frameworks</li>
-      <li>Participe de comunidades</li>
-      <li>Monte seu portfólio</li>
-      <li>Nunca pare de aprender</li>
-    </ul>
-  </section>
-
-  <button onclick="window.location.href='cs.html'">Criações Famosas por Linguagem</button>
-  <button onclick="window.location.href='start.html'">Curso 100% GRÁTIS</button>
+    <div class="btn-group">
+      <a href="cs.html" class="btn" role="button" aria-label="Criações famosas por linguagem">Criações Famosas por Linguagem</a>
+      <a href="start.html" class="btn" role="button" aria-label="Curso 100% grátis">Curso 100% GRÁTIS</a>
+      <a href="Ide_teste.html" class="btn" role="button" aria-label="Teste uma IDE de JavaScript">Teste uma IDE de JavaScript</a>
+    </div>
+  </main>
 
   <footer>
     &copy; 2025 Welenton - Site para programadores iniciantes.
@@ -208,7 +280,7 @@
     setInterval(atualizarRelogio, 1000);
     atualizarRelogio();
 
-    // Aparecer após 3 segundos
+    // Efeito fade-in no carregamento da página
     window.addEventListener('load', () => {
       setTimeout(() => {
         document.body.classList.add('mostrar');
